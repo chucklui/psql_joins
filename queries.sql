@@ -21,3 +21,18 @@ ORDER BY count;
  Sarah      |     3
  Shana      |     4
 
+SELECT first_name,
+       ROUND(AVG(price)) AS average_price,
+       COUNT(*)
+  FROM owners o
+         JOIN vehicles v
+              ON o.id = v.owner_id
+  GROUP BY first_name
+  HAVING COUNT(owner_id) > 1
+     AND ROUND(AVG(price)) > 10000
+  ORDER BY count DESC;
+ first_name | average_price | count 
+------------+---------------+-------
+ Shana      |         19875 |     4
+ Sarah      |         16333 |     3
+ Jane       |         15000 |     2
