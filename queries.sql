@@ -5,11 +5,11 @@ LEFT JOIN vehicles
 ON owners.id = vehicles.owner_id
 ORDER BY owners.id;
 
-SELECT owners.first_name, COUNT(vehicles.owner_id)
+SELECT first_name, COUNT(*)
 FROM owners
 JOIN vehicles
 ON owners.id = vehicles.owner_id
-GROUP BY first_name
+GROUP BY owners.id
 ORDER BY count;
 
  first_name | count
